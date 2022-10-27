@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Project: Post } = require('../models');
+const { User, Post } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
@@ -41,6 +41,7 @@ router.get('/post/:id', (req, res) => {
     }})
       .then( raw => {
         const proj = raw.get({plain : true})
+        console.log(proj)
         res.render('post', {...proj, logged_in : req.session.logged_in})
       })
       .catch( err => res.status(400).json(err) )
