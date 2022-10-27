@@ -1,0 +1,27 @@
+[
+    {
+        "content" : "Thanks for this insightful information! /s",
+        "commenter_id" : 3,
+        "post_id" : 1
+    },
+    {
+        "content" : "I'm not a fan of MVC, but I do like models.",
+        "commenter_id" : 2,
+        "post_id" : 2
+    },
+    {
+        "content" : "I really think you should give MVC a chance!",
+        "commenter_id" : 1,
+        "post_id" : 3
+    },
+    {
+        "content" : "I'll take your advice you seem smart buddy, check out my post about ram!",
+        "commenter_id" :3,
+        "post_id" : 3
+    },
+    {
+        "content" : "What the heck man I checked out this post since you seemed cool, but my credit card info got stolen!",
+        "commenter_id" : 2,
+        "post_id" : 4
+    }
+]

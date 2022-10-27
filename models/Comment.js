@@ -11,6 +11,11 @@ Comment.init(
             primaryKey : true,
             autoIncrement : true,
         },
+
+        content : {
+            type : DataTypes.STRING,
+            allowNull : false,
+        },
         
         commenter_id : {
             type : DataTypes.INTEGER,

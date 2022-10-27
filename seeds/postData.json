@@ -1,0 +1,22 @@
+[
+    {
+        "title" : "What does MVC stand for?",
+        "content" : "MVC is an acronym for Model, View Control.",
+        "author_id" : 1
+    },
+    {
+        "title" : "A simple guide to Models.",
+        "content" : "Models are an easy way to setup pieces of your database in a logical manner",
+        "author_id" : 1
+    },
+    {
+        "title" : "Why MVC sucks and you shouldn't use it.",
+        "content" : "I'm smarter than you just listen to me!",
+        "author_id" : 2
+    },
+    {
+        "title" : "How to download more ram.",
+        "content" : "Going to this website and enter your credit card information. https://www.cardscammer.gg",
+        "author_id" : 3
+    }
+]
