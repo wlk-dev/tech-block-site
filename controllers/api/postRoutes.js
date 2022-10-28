@@ -6,9 +6,11 @@ router.get('/:id', withAuth, (req, res) => {
   const id = req.params.id
   if(id) {
     Post.findByPk( id )
-      .then( post => res.status(200).json(post) )
+      .then( post => res.status(200).json(post))
       .catch( err => res.status(400).json(err) )
   }
+
+
 });
 
 router.get('/', withAuth, (req, res) => { // add a where clause inside here

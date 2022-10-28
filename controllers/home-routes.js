@@ -38,14 +38,17 @@ router.get('/post/:id', withAuth, async (req, res) => {
     const raw = await Comment.findAll({ where : { post_id : id }, include : { model : User, attributes : ['username'] } })
     const comments = raw.map( c => c.get({plain : true}) )
 
-    console.log(comments)
-
     Post.findByPk(id, {include : {
       model : User,
       attributes : ['username']
     }})
       .then( raw => {
         const post = raw.get({plain : true})
+
+        req.session.save(() => {
+          req.session.current_post_id = post.id;
+        });
+
         res.render('post', {...post, logged_in : req.session.logged_in, comments})
       })
       .catch( err => res.status(400).json(err) )

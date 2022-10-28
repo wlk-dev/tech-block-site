@@ -16,18 +16,20 @@ router.get('/:post_id', withAuth, (req, res) => { // add a where clause inside h
   if (post_id) {
     Comment.findAll({ where : { post_id } })
       .then( comments => comments.map(comment => comment.get({plain : true})) )
-      .then( comments => res.status(200).json(comments) )
+      .then( comments => res.status(200).json(comments))
       .catch( err => res.status(400).json(err) )
   } else {
     res.status(400).json({msg : "missing post_id"})
   }
 })
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/create', withAuth, async (req, res) => {
+  console.log("here", req.body, req.session.current_post_id)
   try {
     const newComment = await Comment.create({
       ...req.body,
       commenter_id: req.session.user_id,
+      post_id : req.session.current_post_id
     });
 
     res.status(200).json(newComment);
