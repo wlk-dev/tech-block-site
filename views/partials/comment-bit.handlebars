@@ -1,9 +1,17 @@
-<section class="container px-5 py-6 ">
-    <div class="card p-4 m-2">
-        <div class="d-flex">
-            <span class="p-2 text-white bg-info">{{user.username}}</span>
-            <span class="p-2 border border-info">{{content}}</span>
-            <span class="p-2 ml-auto p-2">{{format_date createdAt}}</span>
+<section>
+  <div class="container text-dark">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-12 col-lg-10 col-xl-8">
+        <div class="d-flex flex-start mb-4">
+          <div class="card w-100">
+            <div class="card-body p-4">
+              <div class="">
+                <h5>{{user.username}}</h5>
+                <small class="small">{{format_date createdAt}}</small>
+                <p class="pt-2">{{content}}</p>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
+
 </section>
