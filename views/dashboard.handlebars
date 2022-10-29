@@ -1,0 +1,12 @@
+<section class="container" style="background-color: #333;">
+  <section class="flex-row justify-center">
+    {{#if update}}
+      {{> update-post}}
+    {{else}}
+      {{> new-post}}
+      {{#each posts as |post|}}
+      {{> user-post}}
+      {{/each}}
+    {{/if}}
+  </section>
+</section>

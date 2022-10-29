@@ -20,11 +20,11 @@ router.get('/', withAuth, (req, res) => { // add a where clause inside here
     .catch( err => res.status(400).json(err) )
 })
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/create', withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({
       ...req.body,
-      author_id: req.session.user_id,
+      author_id : req.session.user_id
     });
 
     res.status(200).json(newPost);
@@ -33,7 +33,33 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.put('/update/:id', withAuth, (req, res) => {
+  const id = req.params.id
+  Post.update({
+    ...req.body,
+  },
+  {
+    where : {
+      id,
+    }
+  }).then( updatedPost => res.status(200).json(updatedPost) )
+    .catch( err => res.status(400).json(err) )
+})
+
+// router.post('/', withAuth, async (req, res) => {
+//   try {
+//     const newPost = await Post.create({
+//       ...req.body,
+//       author_id: req.session.user_id,
+//     });
+
+//     res.status(200).json(newPost);
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
+
+router.delete('/delete/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.destroy({
       where: {

@@ -14,12 +14,12 @@ const withAuth = require('../../utils/auth')
 router.get('/:post_id', withAuth, (req, res) => { // add a where clause inside here
   const post_id = req.params.post_id
   if (post_id) {
-    Comment.findAll({ where : { post_id } })
-      .then( comments => comments.map(comment => comment.get({plain : true})) )
-      .then( comments => res.status(200).json(comments))
-      .catch( err => res.status(400).json(err) )
+    Comment.findAll({ where: { post_id } })
+      .then(comments => comments.map(comment => comment.get({ plain: true })))
+      .then(comments => res.status(200).json(comments))
+      .catch(err => res.status(400).json(err))
   } else {
-    res.status(400).json({msg : "missing post_id"})
+    res.status(400).json({ msg: "missing post_id" })
   }
 })
 
@@ -29,7 +29,7 @@ router.post('/create', withAuth, async (req, res) => {
     const newComment = await Comment.create({
       ...req.body,
       commenter_id: req.session.user_id,
-      post_id : req.session.current_post_id
+      post_id: req.session.current_post_id
     });
 
     res.status(200).json(newComment);
@@ -38,12 +38,25 @@ router.post('/create', withAuth, async (req, res) => {
   }
 });
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.put('/update/:id', withAuth, (req, res) => {
+  const id = req.params.id
+  Comment.update({
+    ...req.body,
+  },
+  {
+    where : {
+      id,
+    }
+  }).then( updatedPost => res.status(200).json(updatedPost) )
+    .catch( err => res.status(400).json(err) )
+})
+
+
+router.delete('/delete/:id', withAuth, async (req, res) => {
   try {
     const commentData = await Comment.destroy({
       where: {
         id: req.params.id,
-        commenter_id: req.session.user_id,
       },
     });
 

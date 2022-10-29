@@ -2,5 +2,7 @@
     <div class="card p-4 m-2">
         <a href="/post/{{id}}"><h5 class="">{{title}}</h5></a>{{format_date createdAt}}
         <div class="card-body text-muted lead">{{content}}</div>
+        <button type="button" class="btn btn-danger delete-post btn-block" data-pid="{{id}}">Delete Post</button>
+        <button type="button" class="btn btn-success goto-update-post btn-block" data-pid="{{id}}">Update Post</button>
     </div>
 </section>

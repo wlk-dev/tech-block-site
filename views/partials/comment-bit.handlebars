@@ -9,6 +9,10 @@
                 <h5>{{user.username}}</h5>
                 <small class="small">{{format_date createdAt}}</small>
                 <p class="pt-2">{{content}}</p>
+                {{#if posted_by_user}}
+                  <button class="btn btn-danger btn-sm delete-comment" data-cid="{{id}}">Delete</button>
+                  <button class="btn btn-primary btn-sm update-comment" data-cid="{{id}}">Update</button>
+                {{/if}}
               </div>
             </div>
           </div>
