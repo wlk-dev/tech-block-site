@@ -1,10 +1,12 @@
 const postComment = async (event) => {
     const content = $("#commentText").val();
 
+    const post_id = document.location.href.split('/').pop()
+
     if (content) {
         const response = await fetch('/api/comments/create', {
             method: 'POST',
-            body: JSON.stringify({ content }),
+            body: JSON.stringify({ content, post_id }),
             headers: { 'Content-Type': 'application/json' },
         });
 
@@ -20,7 +22,6 @@ const postComment = async (event) => {
 
 const updateComment = async (event) => {
     const id = event.target.dataset.cid
-
     const commentText = $($(event.target).parent().children().get(2)).text()
     // this is fucking witchcraft but it works ^^^^
 

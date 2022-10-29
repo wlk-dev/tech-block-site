@@ -28,8 +28,7 @@ router.post('/create', withAuth, async (req, res) => {
   try {
     const newComment = await Comment.create({
       ...req.body,
-      commenter_id: req.session.user_id,
-      post_id: req.session.current_post_id
+      commenter_id: req.session.user_id
     });
 
     res.status(200).json(newComment);

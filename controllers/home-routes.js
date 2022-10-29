@@ -88,10 +88,6 @@ router.get('/post/:id', withAuth, async (req, res) => {
             .then(raw => {
                 const post = raw.get({ plain: true })
 
-                req.session.save(() => {
-                    req.session.current_post_id = post.id;
-                });
-
                 res.render('post', { ...post, logged_in: req.session.logged_in, user_id : req.session.user_id, comments })
             })
             .catch(err => res.status(400).json(err))
