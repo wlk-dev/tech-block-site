@@ -12,6 +12,7 @@ const postComment = async (event) => {
             document.location.reload();
         } else {
             alert('Failed to post comment.');
+            console.log(response.json())
         }
 
     }
@@ -85,7 +86,7 @@ const deleteComment = async (event) => {
         if (response.ok) {
             await Swal.fire(
                 'Deleted!',
-                'Your post has been deleted.',
+                'Your comment has been deleted.',
                 'success'
             )
             document.location.reload();
