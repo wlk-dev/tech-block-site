@@ -15,6 +15,8 @@ This a fully functional Tech Blog website, includes both client and server side 
 `N/A`
 ## Usage
 Like any good blog the user is able to create an account, which enables them to create posts and leave comments on other peoples posts.
+
+Head over to the deployed [site test](https://tech-blog-site-production.up.railway.app/dashboard) it out.
 ## License
 This project is covered under the [MIT](https://opensource.org/licenses/MIT) license.
 ## Contribution Guidelines
